@@ -1,9 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# shell
 .venv
 uv.lock
 .env
 
-setup.md
-
+# folders
 docs
 input/
 output/
+
+# me only
+setup.md
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# OS specific
+.DS_Store
