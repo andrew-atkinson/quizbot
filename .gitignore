@@ -1,0 +1,9 @@
+.venv
+uv.lock
+.env
+
+setup.md
+
+docs
+input/
+output/
