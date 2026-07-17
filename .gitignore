@@ -1,6 +1,7 @@
 # Python
 __pycache__/
 *.py[cod]
+.pytest_cache
 
 # shell
 .venv
@@ -20,3 +21,6 @@ setup.md
 
 # OS specific
 .DS_Store
+
+#claude
+.claude
