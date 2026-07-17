@@ -1,0 +1,183 @@
+// Question bank: Week 3 - loops
+// run: demo
+
+$CATEGORY: top/Quizbot/demo/c1 Anatomy and purpose of a for loop
+// Anatomy and purpose of a for loop
+
+// [id:c1-A] [tag:c1] [tag:multiple_choice]
+::c1-A Naming the three components::What are the three components required within the parentheses of a for loop? {
+    ~Start value, End value, and Step size
+    =Initialization, Condition, and Incrementer
+    ~Variable declaration, Boolean expression, and Update rule
+    ~Start value, End value, and Incrementer
+}
+
+// [id:c1-B] [tag:c1] [tag:multiple_choice]
+::c1-B Which part controls continuation::Which part of the for loop determines if the loop continues or stops? {
+    =The Condition
+    ~The Initialization
+    ~The Incrementer
+    ~The Code Block
+}
+
+// [id:c1-C] [tag:c1] [tag:multiple_choice]
+::c1-C Purpose of the incrementer::In `for (let x \= 0; x < 10; x++)`, what is the purpose of `x++`? {
+    ~To set the starting value of x
+    ~To check if x is less than 10
+    ~To define the range of the loop
+    =To update the variable after each iteration
+}
+
+// [id:c1-D] [tag:c1] [tag:multiple_choice]
+::c1-D Omitting the incrementer::What happens if you omit the incrementer in a for loop? {
+    ~The code throws a syntax error
+    ~The loop runs once
+    =You create an infinite loop because the variable never changes
+    ~The loop increments by 1 automatically
+}
+
+$CATEGORY: top/Quizbot/demo/c2 Infinite loops
+// Infinite loops
+
+// [id:c2-A] [tag:c2] [tag:true_false]
+::c2-A Convergence claim A::Statement A\: a loop whose variable moves away from the exit condition runs forever. {TRUE}
+
+// [id:c2-B] [tag:c2] [tag:true_false]
+::c2-B Convergence claim B::Statement B\: a loop whose variable moves away from the exit condition runs forever. {FALSE}
+
+// [id:c2-C] [tag:c2] [tag:true_false]
+::c2-C Convergence claim C::Statement C\: a loop whose variable moves away from the exit condition runs forever. {TRUE}
+
+// [id:c2-D] [tag:c2] [tag:true_false]
+::c2-D Convergence claim D::Statement D\: a loop whose variable moves away from the exit condition runs forever. {FALSE}
+
+$CATEGORY: top/Quizbot/demo/c3 Function purposes
+// Function purposes
+
+// [id:c3-A] [tag:c3] [tag:matching]
+::c3-A Function purposes, set A::Match each function to what it does (set A). {
+    =map() -> translates a value from one range to another
+    =circle() -> draws a circle
+    =rect() -> draws a rectangle
+}
+
+// [id:c3-B] [tag:c3] [tag:matching]
+::c3-B Function purposes, set B::Match each function to what it does (set B). {
+    =map() -> translates a value from one range to another
+    =circle() -> draws a circle
+    =rect() -> draws a rectangle
+}
+
+// [id:c3-C] [tag:c3] [tag:matching]
+::c3-C Function purposes, set C::Match each function to what it does (set C). {
+    =map() -> translates a value from one range to another
+    =circle() -> draws a circle
+    =rect() -> draws a rectangle
+}
+
+// [id:c3-D] [tag:c3] [tag:matching]
+::c3-D Function purposes, set D::Match each function to what it does (set D). {
+    =map() -> translates a value from one range to another
+    =circle() -> draws a circle
+    =rect() -> draws a rectangle
+}
+
+$CATEGORY: top/Quizbot/demo/c4 Nested loop iterations
+// Nested loop iterations
+
+// [id:c4-A] [tag:c4] [tag:numerical]
+::c4-A Total iterations, set A::An outer loop runs and an inner loop runs. Total iterations? (set A) {#12}
+
+// [id:c4-B] [tag:c4] [tag:numerical]
+::c4-B Total iterations, set B::An outer loop runs and an inner loop runs. Total iterations? (set B) {#20}
+
+// [id:c4-C] [tag:c4] [tag:numerical]
+::c4-C Total iterations, set C::An outer loop runs and an inner loop runs. Total iterations? (set C) {#9}
+
+// [id:c4-D] [tag:c4] [tag:numerical]
+::c4-D Total iterations, set D::An outer loop runs and an inner loop runs. Total iterations? (set D) {#6}
+
+$CATEGORY: top/Quizbot/demo/c5 Code completion
+// Code completion
+
+// [id:c5-A] [tag:c5] [tag:multiple_choice]
+::c5-A Gap in the loop condition (A)::[markdown]Complete the loop to draw circles\: `for (let x \= 20; ___; x +\= 30) \{ circle(x, 70); \}` (variant A) {
+    ~[markdown]`x < 400`
+    =[markdown]`x <\= 400`
+    ~[markdown]`x \= 400`
+    ~[markdown]`x < 370`
+}
+
+// [id:c5-B] [tag:c5] [tag:multiple_choice]
+::c5-B Gap in the loop condition (B)::[markdown]Complete the loop to draw circles\: `for (let x \= 20; ___; x +\= 30) \{ circle(x, 70); \}` (variant B) {
+    ~[markdown]`x < 400`
+    ~[markdown]`x <\= 400`
+    ~[markdown]`x \= 400`
+    =[markdown]`x < 370`
+}
+
+// [id:c5-C] [tag:c5] [tag:multiple_choice]
+::c5-C Gap in the loop condition (C)::[markdown]Complete the loop to draw circles\: `for (let x \= 20; ___; x +\= 30) \{ circle(x, 70); \}` (variant C) {
+    =[markdown]`x < 400`
+    ~[markdown]`x <\= 400`
+    ~[markdown]`x \= 400`
+    ~[markdown]`x < 370`
+}
+
+// [id:c5-D] [tag:c5] [tag:multiple_choice]
+::c5-D Gap in the loop condition (D)::[markdown]Complete the loop to draw circles\: `for (let x \= 20; ___; x +\= 30) \{ circle(x, 70); \}` (variant D) {
+    ~[markdown]`x < 400`
+    ~[markdown]`x <\= 400`
+    =[markdown]`x \= 400`
+    ~[markdown]`x < 370`
+}
+
+$CATEGORY: top/Quizbot/demo/c6 Naming the parts
+// Naming the parts
+
+// [id:c6-A] [tag:c6] [tag:short_answer]
+::c6-A Naming a loop part, set A::Name the part of the loop described in set A. {=condition}
+
+// [id:c6-B] [tag:c6] [tag:short_answer]
+::c6-B Naming a loop part, set B::Name the part of the loop described in set B. {=incrementer =increment}
+
+// [id:c6-C] [tag:c6] [tag:short_answer]
+::c6-C Naming a loop part, set C::Name the part of the loop described in set C. {=initialization =initialisation}
+
+// [id:c6-D] [tag:c6] [tag:short_answer]
+::c6-D Naming a loop part, set D::Name the part of the loop described in set D. {=nested =nesting}
+
+$CATEGORY: top/Quizbot/demo/c7 What loops are good for
+// What loops are good for
+
+// [id:c7-A] [tag:c7] [tag:multiple_answer]
+::c7-A Uses of repetition, set A::Which of these describe loops (set A)? Select all that apply. {
+    ~%50%Repeating a shape across the canvas
+    ~%-50%Reducing duplicated code
+    ~%50%Driving a value with a counter
+    ~%-50%Guaranteeing the sketch never crashes
+}
+
+// [id:c7-B] [tag:c7] [tag:multiple_answer]
+::c7-B Uses of repetition, set B::Which of these describe loops (set B)? Select all that apply. {
+    ~%-50%Repeating a shape across the canvas
+    ~%50%Reducing duplicated code
+    ~%-50%Driving a value with a counter
+    ~%50%Guaranteeing the sketch never crashes
+}
+
+// [id:c7-C] [tag:c7] [tag:multiple_answer]
+::c7-C Uses of repetition, set C::Which of these describe loops (set C)? Select all that apply. {
+    ~%33.33333%Repeating a shape across the canvas
+    ~%33.33333%Reducing duplicated code
+    ~%33.33333%Driving a value with a counter
+    ~%-100%Guaranteeing the sketch never crashes
+}
+
+// [id:c7-D] [tag:c7] [tag:multiple_answer]
+::c7-D Uses of repetition, set D::Which of these describe loops (set D)? Select all that apply. {
+    ~%-50%Repeating a shape across the canvas
+    ~%-50%Reducing duplicated code
+    ~%50%Driving a value with a counter
+    ~%50%Guaranteeing the sketch never crashes
+}

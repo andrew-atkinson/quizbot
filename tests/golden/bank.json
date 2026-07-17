@@ -1,0 +1,489 @@
+{
+  "run_id": "demo",
+  "title": "Week 3 - loops",
+  "source": "week-3.md",
+  "groups": {
+    "c1": {
+      "group_id": "c1",
+      "concept_title": "Anatomy and purpose of a for loop",
+      "question_type": "multiple_choice",
+      "variants": {
+        "A": {
+          "group_id": "c1",
+          "label": "A",
+          "question_text": "What are the three components required within the parentheses of a for loop?",
+          "variant_summary": "Naming the three components",
+          "text_format": "plain",
+          "options": [
+            "Start value, End value, and Step size",
+            "Initialization, Condition, and Incrementer",
+            "Variable declaration, Boolean expression, and Update rule",
+            "Start value, End value, and Incrementer"
+          ],
+          "kind": "multiple_choice",
+          "correct_index": 1,
+          "feedback": null
+        },
+        "B": {
+          "group_id": "c1",
+          "label": "B",
+          "question_text": "Which part of the for loop determines if the loop continues or stops?",
+          "variant_summary": "Which part controls continuation",
+          "text_format": "plain",
+          "options": [
+            "The Condition",
+            "The Initialization",
+            "The Incrementer",
+            "The Code Block"
+          ],
+          "kind": "multiple_choice",
+          "correct_index": 0,
+          "feedback": null
+        },
+        "C": {
+          "group_id": "c1",
+          "label": "C",
+          "question_text": "In `for (let x = 0; x < 10; x++)`, what is the purpose of `x++`?",
+          "variant_summary": "Purpose of the incrementer",
+          "text_format": "plain",
+          "options": [
+            "To set the starting value of x",
+            "To check if x is less than 10",
+            "To define the range of the loop",
+            "To update the variable after each iteration"
+          ],
+          "kind": "multiple_choice",
+          "correct_index": 3,
+          "feedback": null
+        },
+        "D": {
+          "group_id": "c1",
+          "label": "D",
+          "question_text": "What happens if you omit the incrementer in a for loop?",
+          "variant_summary": "Omitting the incrementer",
+          "text_format": "plain",
+          "options": [
+            "The code throws a syntax error",
+            "The loop runs once",
+            "You create an infinite loop because the variable never changes",
+            "The loop increments by 1 automatically"
+          ],
+          "kind": "multiple_choice",
+          "correct_index": 2,
+          "feedback": null
+        }
+      }
+    },
+    "c5": {
+      "group_id": "c5",
+      "concept_title": "Code completion",
+      "question_type": "multiple_choice",
+      "variants": {
+        "A": {
+          "group_id": "c5",
+          "label": "A",
+          "question_text": "Complete the loop to draw circles: `for (let x = 20; ___; x += 30) { circle(x, 70); }` (variant A)",
+          "variant_summary": "Gap in the loop condition (A)",
+          "text_format": "markdown",
+          "options": [
+            "`x < 400`",
+            "`x <= 400`",
+            "`x = 400`",
+            "`x < 370`"
+          ],
+          "kind": "multiple_choice",
+          "correct_index": 1,
+          "feedback": null
+        },
+        "B": {
+          "group_id": "c5",
+          "label": "B",
+          "question_text": "Complete the loop to draw circles: `for (let x = 20; ___; x += 30) { circle(x, 70); }` (variant B)",
+          "variant_summary": "Gap in the loop condition (B)",
+          "text_format": "markdown",
+          "options": [
+            "`x < 400`",
+            "`x <= 400`",
+            "`x = 400`",
+            "`x < 370`"
+          ],
+          "kind": "multiple_choice",
+          "correct_index": 3,
+          "feedback": null
+        },
+        "C": {
+          "group_id": "c5",
+          "label": "C",
+          "question_text": "Complete the loop to draw circles: `for (let x = 20; ___; x += 30) { circle(x, 70); }` (variant C)",
+          "variant_summary": "Gap in the loop condition (C)",
+          "text_format": "markdown",
+          "options": [
+            "`x < 400`",
+            "`x <= 400`",
+            "`x = 400`",
+            "`x < 370`"
+          ],
+          "kind": "multiple_choice",
+          "correct_index": 0,
+          "feedback": null
+        },
+        "D": {
+          "group_id": "c5",
+          "label": "D",
+          "question_text": "Complete the loop to draw circles: `for (let x = 20; ___; x += 30) { circle(x, 70); }` (variant D)",
+          "variant_summary": "Gap in the loop condition (D)",
+          "text_format": "markdown",
+          "options": [
+            "`x < 400`",
+            "`x <= 400`",
+            "`x = 400`",
+            "`x < 370`"
+          ],
+          "kind": "multiple_choice",
+          "correct_index": 2,
+          "feedback": null
+        }
+      }
+    },
+    "c2": {
+      "group_id": "c2",
+      "concept_title": "Infinite loops",
+      "question_type": "true_false",
+      "variants": {
+        "A": {
+          "group_id": "c2",
+          "label": "A",
+          "question_text": "Statement A: a loop whose variable moves away from the exit condition runs forever.",
+          "variant_summary": "Convergence claim A",
+          "text_format": "plain",
+          "kind": "true_false",
+          "correct_answer": true,
+          "feedback_wrong": null,
+          "feedback_right": null
+        },
+        "B": {
+          "group_id": "c2",
+          "label": "B",
+          "question_text": "Statement B: a loop whose variable moves away from the exit condition runs forever.",
+          "variant_summary": "Convergence claim B",
+          "text_format": "plain",
+          "kind": "true_false",
+          "correct_answer": false,
+          "feedback_wrong": null,
+          "feedback_right": null
+        },
+        "C": {
+          "group_id": "c2",
+          "label": "C",
+          "question_text": "Statement C: a loop whose variable moves away from the exit condition runs forever.",
+          "variant_summary": "Convergence claim C",
+          "text_format": "plain",
+          "kind": "true_false",
+          "correct_answer": true,
+          "feedback_wrong": null,
+          "feedback_right": null
+        },
+        "D": {
+          "group_id": "c2",
+          "label": "D",
+          "question_text": "Statement D: a loop whose variable moves away from the exit condition runs forever.",
+          "variant_summary": "Convergence claim D",
+          "text_format": "plain",
+          "kind": "true_false",
+          "correct_answer": false,
+          "feedback_wrong": null,
+          "feedback_right": null
+        }
+      }
+    },
+    "c3": {
+      "group_id": "c3",
+      "concept_title": "Function purposes",
+      "question_type": "matching",
+      "variants": {
+        "A": {
+          "group_id": "c3",
+          "label": "A",
+          "question_text": "Match each function to what it does (set A).",
+          "variant_summary": "Function purposes, set A",
+          "text_format": "plain",
+          "kind": "matching",
+          "pairs": [
+            {
+              "left": "map()",
+              "right": "translates a value from one range to another"
+            },
+            {
+              "left": "circle()",
+              "right": "draws a circle"
+            },
+            {
+              "left": "rect()",
+              "right": "draws a rectangle"
+            }
+          ]
+        },
+        "B": {
+          "group_id": "c3",
+          "label": "B",
+          "question_text": "Match each function to what it does (set B).",
+          "variant_summary": "Function purposes, set B",
+          "text_format": "plain",
+          "kind": "matching",
+          "pairs": [
+            {
+              "left": "map()",
+              "right": "translates a value from one range to another"
+            },
+            {
+              "left": "circle()",
+              "right": "draws a circle"
+            },
+            {
+              "left": "rect()",
+              "right": "draws a rectangle"
+            }
+          ]
+        },
+        "C": {
+          "group_id": "c3",
+          "label": "C",
+          "question_text": "Match each function to what it does (set C).",
+          "variant_summary": "Function purposes, set C",
+          "text_format": "plain",
+          "kind": "matching",
+          "pairs": [
+            {
+              "left": "map()",
+              "right": "translates a value from one range to another"
+            },
+            {
+              "left": "circle()",
+              "right": "draws a circle"
+            },
+            {
+              "left": "rect()",
+              "right": "draws a rectangle"
+            }
+          ]
+        },
+        "D": {
+          "group_id": "c3",
+          "label": "D",
+          "question_text": "Match each function to what it does (set D).",
+          "variant_summary": "Function purposes, set D",
+          "text_format": "plain",
+          "kind": "matching",
+          "pairs": [
+            {
+              "left": "map()",
+              "right": "translates a value from one range to another"
+            },
+            {
+              "left": "circle()",
+              "right": "draws a circle"
+            },
+            {
+              "left": "rect()",
+              "right": "draws a rectangle"
+            }
+          ]
+        }
+      }
+    },
+    "c4": {
+      "group_id": "c4",
+      "concept_title": "Nested loop iterations",
+      "question_type": "numerical",
+      "variants": {
+        "A": {
+          "group_id": "c4",
+          "label": "A",
+          "question_text": "An outer loop runs and an inner loop runs. Total iterations? (set A)",
+          "variant_summary": "Total iterations, set A",
+          "text_format": "plain",
+          "kind": "numerical",
+          "answer": 12.0,
+          "tolerance": 0.0,
+          "feedback": null
+        },
+        "B": {
+          "group_id": "c4",
+          "label": "B",
+          "question_text": "An outer loop runs and an inner loop runs. Total iterations? (set B)",
+          "variant_summary": "Total iterations, set B",
+          "text_format": "plain",
+          "kind": "numerical",
+          "answer": 20.0,
+          "tolerance": 0.0,
+          "feedback": null
+        },
+        "C": {
+          "group_id": "c4",
+          "label": "C",
+          "question_text": "An outer loop runs and an inner loop runs. Total iterations? (set C)",
+          "variant_summary": "Total iterations, set C",
+          "text_format": "plain",
+          "kind": "numerical",
+          "answer": 9.0,
+          "tolerance": 0.0,
+          "feedback": null
+        },
+        "D": {
+          "group_id": "c4",
+          "label": "D",
+          "question_text": "An outer loop runs and an inner loop runs. Total iterations? (set D)",
+          "variant_summary": "Total iterations, set D",
+          "text_format": "plain",
+          "kind": "numerical",
+          "answer": 6.0,
+          "tolerance": 0.0,
+          "feedback": null
+        }
+      }
+    },
+    "c6": {
+      "group_id": "c6",
+      "concept_title": "Naming the parts",
+      "question_type": "short_answer",
+      "variants": {
+        "A": {
+          "group_id": "c6",
+          "label": "A",
+          "question_text": "Name the part of the loop described in set A.",
+          "variant_summary": "Naming a loop part, set A",
+          "text_format": "plain",
+          "kind": "short_answer",
+          "accepted_answers": [
+            "condition"
+          ],
+          "feedback": null
+        },
+        "B": {
+          "group_id": "c6",
+          "label": "B",
+          "question_text": "Name the part of the loop described in set B.",
+          "variant_summary": "Naming a loop part, set B",
+          "text_format": "plain",
+          "kind": "short_answer",
+          "accepted_answers": [
+            "incrementer",
+            "increment"
+          ],
+          "feedback": null
+        },
+        "C": {
+          "group_id": "c6",
+          "label": "C",
+          "question_text": "Name the part of the loop described in set C.",
+          "variant_summary": "Naming a loop part, set C",
+          "text_format": "plain",
+          "kind": "short_answer",
+          "accepted_answers": [
+            "initialization",
+            "initialisation"
+          ],
+          "feedback": null
+        },
+        "D": {
+          "group_id": "c6",
+          "label": "D",
+          "question_text": "Name the part of the loop described in set D.",
+          "variant_summary": "Naming a loop part, set D",
+          "text_format": "plain",
+          "kind": "short_answer",
+          "accepted_answers": [
+            "nested",
+            "nesting"
+          ],
+          "feedback": null
+        }
+      }
+    },
+    "c7": {
+      "group_id": "c7",
+      "concept_title": "What loops are good for",
+      "question_type": "multiple_answer",
+      "variants": {
+        "A": {
+          "group_id": "c7",
+          "label": "A",
+          "question_text": "Which of these describe loops (set A)? Select all that apply.",
+          "variant_summary": "Uses of repetition, set A",
+          "text_format": "plain",
+          "options": [
+            "Repeating a shape across the canvas",
+            "Reducing duplicated code",
+            "Driving a value with a counter",
+            "Guaranteeing the sketch never crashes"
+          ],
+          "kind": "multiple_answer",
+          "correct_indices": [
+            0,
+            2
+          ],
+          "feedback": null
+        },
+        "B": {
+          "group_id": "c7",
+          "label": "B",
+          "question_text": "Which of these describe loops (set B)? Select all that apply.",
+          "variant_summary": "Uses of repetition, set B",
+          "text_format": "plain",
+          "options": [
+            "Repeating a shape across the canvas",
+            "Reducing duplicated code",
+            "Driving a value with a counter",
+            "Guaranteeing the sketch never crashes"
+          ],
+          "kind": "multiple_answer",
+          "correct_indices": [
+            1,
+            3
+          ],
+          "feedback": null
+        },
+        "C": {
+          "group_id": "c7",
+          "label": "C",
+          "question_text": "Which of these describe loops (set C)? Select all that apply.",
+          "variant_summary": "Uses of repetition, set C",
+          "text_format": "plain",
+          "options": [
+            "Repeating a shape across the canvas",
+            "Reducing duplicated code",
+            "Driving a value with a counter",
+            "Guaranteeing the sketch never crashes"
+          ],
+          "kind": "multiple_answer",
+          "correct_indices": [
+            0,
+            1,
+            2
+          ],
+          "feedback": null
+        },
+        "D": {
+          "group_id": "c7",
+          "label": "D",
+          "question_text": "Which of these describe loops (set D)? Select all that apply.",
+          "variant_summary": "Uses of repetition, set D",
+          "text_format": "plain",
+          "options": [
+            "Repeating a shape across the canvas",
+            "Reducing duplicated code",
+            "Driving a value with a counter",
+            "Guaranteeing the sketch never crashes"
+          ],
+          "kind": "multiple_answer",
+          "correct_indices": [
+            2,
+            3
+          ],
+          "feedback": null
+        }
+      }
+    }
+  },
+  "finalized": true
+}
