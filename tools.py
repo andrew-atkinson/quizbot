@@ -48,6 +48,14 @@ def set_call_log(path: Path | None) -> None:
     _call_log = Path(path) if path else None
 
 
+def reset_state() -> None:
+    """Clear per-run tool state between weeks, so one week's checklist and call-log path
+    do not bleed into the next. Pair with bank.init(), which resets the bank itself."""
+    checklist.clear()
+    completed.clear()
+    set_call_log(None)
+
+
 # ------------------------------------------------------------- checklist
 
 def get_checklist_report(markup: bool = False) -> str:
