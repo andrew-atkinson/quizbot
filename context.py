@@ -1,16 +1,13 @@
-import os
-from pathlib import Path
+"""Prompt construction.
 
-weekTranscription = os.getenv('TRANSCRIPTION')
+Pure: build_messages() takes a transcript (and optional course/week metadata) and returns
+the chat messages. No file or env I/O at import — the caller (pipeline.py) reads the file and
+supplies the metadata. This is what lets one process handle many weeks of many courses.
+"""
 
-with open(weekTranscription, "r", encoding="utf-8") as f:
-    summary = f.read()
-
-source_name = Path(weekTranscription).name
-
-# The transcript sits above the closing rules rather than at the end. A small model
-# attends to the end of the prompt, and the commit rule is what must land.
-system_message = f"""
+# The transcript sits above the closing rules rather than at the end. A small model attends
+# to the end of the prompt, and the commit rule is what must land.
+_SYSTEM_TEMPLATE = """
 You write assessment items for a university course and record them using tools.
 
 THE ONLY WAY TO RECORD A QUESTION IS A TOOL CALL.
@@ -36,10 +33,10 @@ Content rules:
 - Put code in Markdown backticks and set text_format="markdown" for that variant.
   Code left outside backticks will not render correctly.
 - Options must differ from one another in meaning, not just in wording.
-
+{context_line}
 Lecture transcript:
 <transcript>
-{summary}
+{transcript}
 </transcript>
 
 After finalize_bank succeeds, reply with one short plain sentence and stop.
@@ -49,7 +46,7 @@ Remember: a tool call is the only thing that counts. Prose is discarded. To revi
 the same tool again with the same group_id and variant_label.
 """
 
-user_message = """
+USER_MESSAGE = """
 Build a question bank for this lecture.
 
 Five concepts, one question group each:
@@ -85,5 +82,31 @@ For true_false groups: at least one variant must be true and at least one must b
 Start by calling create_checklist.
 """
 
-messages = [{"role": "system", "content": system_message},
-            {"role": "user", "content": user_message}]
+
+def _context_line(course_title, week_label, module) -> str:
+    """A single factual line placing the lecture, or '' when nothing is known.
+
+    Kept plain and unambiguous rather than fluent — it is orienting metadata for the model,
+    not prose it should imitate.
+    """
+    parts = []
+    if week_label:
+        parts.append(week_label)
+    if module:
+        parts.append(module)
+    if course_title:
+        parts.append(f"course: {course_title}")
+    if not parts:
+        return ""
+    return "\nLecture context — " + "; ".join(parts) + ".\n"
+
+
+def build_messages(transcript: str, *, course_title: str | None = None,
+                   week_label: str | None = None, module: str | None = None) -> list[dict]:
+    """The chat messages for one lecture. Metadata is woven in only when supplied."""
+    system_message = _SYSTEM_TEMPLATE.format(
+        context_line=_context_line(course_title, week_label, module),
+        transcript=transcript,
+    )
+    return [{"role": "system", "content": system_message},
+            {"role": "user", "content": USER_MESSAGE}]
