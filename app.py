@@ -1,64 +1,99 @@
-import os
-from datetime import datetime
-from pathlib import Path
+"""CLI entry point. All orchestration lives in pipeline.py; this only parses args, builds the
+LM Studio client, and prints a summary.
 
-from openai import OpenAI
+    python app.py [PATH] [--week N ...] [--weeks A-B] [--output-root DIR] [--dry-run]
+
+PATH is a transcript file or a directory of them; it defaults to the TRANSCRIPTION env var.
+Artifacts are written with the course (a sibling quizzes/ tree), never into this repo.
+"""
+
+import argparse
+import os
+import sys
 
 from dotenv import load_dotenv
+from openai import OpenAI
+
 load_dotenv(override=True)
 
-import bank
-from context import messages, source_name
-from tools import handle_tool_calls, set_call_log, show, tools
-
-MODEL_NAME = os.getenv("MODEL_NAME")
-LOCAL_HOST_URL = os.getenv("LOCAL_HOST_URL")
-lmstudio = OpenAI(base_url=LOCAL_HOST_URL, api_key='lmstudio')
+import hardware
+import pipeline
 
 
-def loop(messages, max_iters: int = 50):
-    """Run until the bank is finalized, the model stops, or we run out of turns.
+def _build_client() -> OpenAI:
+    return OpenAI(base_url=os.getenv("LOCAL_HOST_URL"), api_key="lmstudio")
 
-    max_iters matters more than it used to: a variant can now be revised for free, so a
-    model that keeps 'improving' variant A has no reason of its own to stop.
-    """
-    choice = None
-    for _ in range(max_iters):
-        response = lmstudio.chat.completions.create(
-            model=MODEL_NAME, messages=messages, tools=tools
+
+def _parse_weeks(args) -> list[str] | None:
+    weeks = list(args.week or [])
+    if args.weeks:
+        try:
+            lo, hi = (int(x) for x in args.weeks.split("-"))
+        except ValueError:
+            raise SystemExit(f"--weeks expects a range like 3-8, got {args.weeks!r}")
+        weeks += [str(n) for n in range(lo, hi + 1)]
+    return weeks or None
+
+
+def _print_summary(results, *, dry_run: bool) -> None:
+    if not results:
+        print("No transcripts found.")
+        return
+    print("DRY RUN — units that would be processed:" if dry_run else "Run complete:")
+    for r in results:
+        if dry_run:
+            print(f"  [plan] {r.unit.week_label}")
+        else:
+            status = "OK" if r.finalized else "INCOMPLETE"
+            print(f"  [{status}] {r.unit.week_label}  "
+                  f"{r.n_groups} groups, {r.n_variants} variants")
+            for p in r.problems:
+                print(f"           - {p}")
+        print(f"         -> {r.output_dir}")
+    print(f"\n{len(results)} unit(s).")
+
+
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(description="Generate question banks from lecture transcripts.")
+    parser.add_argument("path", nargs="?", default=os.getenv("TRANSCRIPTION"),
+                        help="transcript file or directory (default: $TRANSCRIPTION)")
+    parser.add_argument("--week", action="append", metavar="N",
+                        help="a week to include, repeatable, e.g. --week 3 --week 5")
+    parser.add_argument("--weeks", metavar="A-B", help="an inclusive week range, e.g. --weeks 3-8")
+    parser.add_argument("--output-root", metavar="DIR",
+                        help="override: write under DIR/<course>/<week> instead of with the course")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="list the units that would be processed, without calling the model")
+    parser.add_argument("--max-iters", type=int, default=pipeline.DEFAULT_MAX_ITERS)
+    args = parser.parse_args(argv)
+
+    if not args.path:
+        parser.error("no PATH given and TRANSCRIPTION is not set")
+
+    weeks = _parse_weeks(args)
+    client = None if args.dry_run else _build_client()
+    model = os.getenv("MODEL_NAME")
+
+    if not args.dry_run:
+        verdict, msg = hardware.check_fit(model)
+        if verdict is False:
+            print(f"Warning: {msg}\n")
+
+    try:
+        results = pipeline.run_course(
+            args.path, weeks=weeks, output_root=args.output_root,
+            client=client, model=model, dry_run=args.dry_run, max_iters=args.max_iters,
         )
-        choice = response.choices[0]
-        if choice.finish_reason != "tool_calls":
-            break
-        messages.append(choice.message)
-        messages.extend(handle_tool_calls(choice.message.tool_calls))
-        if bank.is_finalized():
-            break
-    else:
-        show(f"[yellow]Stopped after {max_iters} turns without finalizing.[/yellow]")
+    except pipeline.ModelLoadError as e:
+        print(str(e))
+        return 2
 
-    # LM Studio returns content=None after a tool-heavy run, and f.write(None) is a TypeError.
-    return (choice.message.content or "") if choice else ""
+    _print_summary(results, dry_run=args.dry_run)
+
+    if not args.dry_run and any(not r.finalized for r in results):
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    run_dir = Path("output") / f"run_{timestamp}"
-    run_dir.mkdir(parents=True, exist_ok=True)
-
-    bank.init(run_id=timestamp, out_dir=run_dir,
-              title=f"Quiz bank {timestamp}", source=source_name)
-    set_call_log(run_dir / "calls.jsonl")
-
-    reply = loop(messages)
-
-    # The transcript is now a debugging aid, not the deliverable: finalize_bank writes
-    # bank.json / quiz.json / bank.gift / quiz_<seed>.gift as the model works.
-    (run_dir / "reply.txt").write_text(reply, encoding="utf-8")
-
-    if not bank.is_finalized():
-        problems = bank.validate_final()
-        show("[red]Bank was not finalized.[/red] Partial work is still in bank.json.")
-        for p in problems:
-            show(f"  - {p}")
-    show(f"Run artifacts in {run_dir}")
+    sys.exit(main())
